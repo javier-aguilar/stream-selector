@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import LikeCard from './likeCard.js';
+
 const Likes = () => {
 
   const [likes, setLikes] = useState([]);
@@ -23,12 +25,8 @@ const Likes = () => {
   return (
     <div className="likes">
     {error}
-    {likes.length > 0 && likes.map((like) => (
-      <div>
-        <p>Artist: {like.artist}</p>
-        <p>Album: {like.title}</p>
-        <hr/ >
-      </div>
+    {likes.length > 0 && likes.map((like, index) => (
+        <LikeCard key={index} artist={like.artist} album={like.title} />
       ))
     }
     </div>);
